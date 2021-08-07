@@ -88,7 +88,6 @@ namespace RentACar
             // 
             this.mnuCarRent.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.nmuCarList});
-            this.mnuCarRent.Enabled = false;
             this.mnuCarRent.Name = "mnuCarRent";
             this.mnuCarRent.Size = new System.Drawing.Size(97, 20);
             this.mnuCarRent.Text = "Wypożyczalnia";
@@ -96,8 +95,10 @@ namespace RentACar
             // nmuCarList
             // 
             this.nmuCarList.Name = "nmuCarList";
-            this.nmuCarList.Size = new System.Drawing.Size(173, 22);
+            this.nmuCarList.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.nmuCarList.Size = new System.Drawing.Size(192, 22);
             this.nmuCarList.Text = "Lista samochodów";
+            this.nmuCarList.Click += new System.EventHandler(this.nmuCarList_Click);
             // 
             // statusStrip1
             // 

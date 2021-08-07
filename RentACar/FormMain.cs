@@ -23,5 +23,11 @@ namespace RentACar
 
             form.ShowDialog();
         }
+
+        private void nmuCarList_Click(object sender, EventArgs e)
+        {
+            FormCarList form = new FormCarList();
+            form.ShowDialog();
+        }
     }
 }

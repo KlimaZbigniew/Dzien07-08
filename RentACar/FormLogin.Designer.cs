@@ -33,8 +33,6 @@ namespace RentACar
             this.tbLogin = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -54,6 +52,7 @@ namespace RentACar
             this.tbLogin.Name = "tbLogin";
             this.tbLogin.Size = new System.Drawing.Size(230, 20);
             this.tbLogin.TabIndex = 1;
+            this.tbLogin.Text = "root";
             // 
             // tbPassword
             // 
@@ -62,6 +61,7 @@ namespace RentACar
             this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(230, 20);
             this.tbPassword.TabIndex = 3;
+            this.tbPassword.Text = "MariaDB2021";
             // 
             // label2
             // 
@@ -72,25 +72,9 @@ namespace RentACar
             this.label2.TabIndex = 2;
             this.label2.Text = "Login";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(126, 202);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(230, 20);
-            this.textBox2.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(85, 209);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Login";
-            // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(78, 136);
+            this.btnLogin.Location = new System.Drawing.Point(40, 110);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(115, 31);
             this.btnLogin.TabIndex = 6;
@@ -101,7 +85,7 @@ namespace RentACar
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(201, 136);
+            this.btnCancel.Location = new System.Drawing.Point(193, 110);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(115, 31);
             this.btnCancel.TabIndex = 7;
@@ -115,11 +99,9 @@ namespace RentACar
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(516, 303);
+            this.ClientSize = new System.Drawing.Size(361, 177);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbLogin);
@@ -141,8 +123,6 @@ namespace RentACar
         private System.Windows.Forms.TextBox tbLogin;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCancel;
     }
