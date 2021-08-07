@@ -20,7 +20,7 @@ namespace RentACar
 
 		BindingSource bSource = new BindingSource();
 
-		private void RefreshData()
+		private DataTable GetDataFromDB()
         {
 			string sql = @"SELECT 
 								TC.id,
@@ -42,15 +42,31 @@ namespace RentACar
 
 			DataTable dt = new DataTable();
 			adapter.Fill(dt); //dump danych odczytanych z bazy do oboiektu data teble.
+			return dt;
+		}
 
-			bSource.DataSource = dt;
-			grid.DataSource = bSource;
+		private void RefreshData()
+        {
+
+			//bSource.DataSource = dt;
+			//grid.DataSource = bSource;
 
 		}
 
 		private void FormCarList_Load(object sender, EventArgs e)
         {
-			RefreshData();
+			
+			DataTable dt = GetDataFromDB();
+			bSource.DataSource = dt;
+
+
+			DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn(); //koilumna z checkboxem.
+			dgvCmb.ValueType = typeof(bool);
+			dgvCmb.Name = "avail-cb";
+			dgvCmb.HeaderText = "Dostępność";
+			grid.Columns.Add(dgvCmb);
+
+			grid.DataSource = bSource;
 			//dostosowanie nagłówków grida
 			grid.Columns["id"].HeaderText = "ID";
 			grid.Columns["brand"].HeaderText = "Marka";
@@ -67,7 +83,7 @@ namespace RentACar
 			grid.Columns["avail"].HeaderText = "Dostępność";
 			grid.Columns["fuel"].HeaderText = "Paliwo";
 
-
+			grid.Columns["avail-cb"].DisplayIndex = grid.Columns["avail"].DisplayIndex -1;
 		}
 
         private void grid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -77,11 +93,21 @@ namespace RentACar
 
 				e.Value = Convert.ToInt32(e.Value) == 1 ? "TAK" : "NIE";
             }
+
+			//Wypełnienie checkboxa w zależnosci od wartosci avil
+			grid.Rows[e.RowIndex].Cells["avail-cb"].Value =
+			Convert.ToInt32(grid.Rows[e.RowIndex].Cells["avail"].Value) == 1 ? true : false;
         }
 
         private void tsbRefresh_Click(object sender, EventArgs e)
         {
 			RefreshData();
+        }
+
+        private void tsbInsert_Click(object sender, EventArgs e)
+        {
+			FormAddCar form = new FormAddCar();
+			form.ShowDialog();
         }
     }
 }

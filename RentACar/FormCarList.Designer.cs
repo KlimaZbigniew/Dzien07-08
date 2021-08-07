@@ -82,6 +82,7 @@ namespace RentACar
             this.tsbInsert.Size = new System.Drawing.Size(23, 22);
             this.tsbInsert.Text = "toolStripButton1";
             this.tsbInsert.ToolTipText = "Dodaj nowy samochód";
+            this.tsbInsert.Click += new System.EventHandler(this.tsbInsert_Click);
             // 
             // tsbRefresh
             // 
