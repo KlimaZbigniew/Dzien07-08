@@ -105,14 +105,26 @@ namespace RentACar
             // 
             // numYear
             // 
+            this.numYear.Increment = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
             this.numYear.Location = new System.Drawing.Point(72, 204);
+            this.numYear.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
             this.numYear.Name = "numYear";
             this.numYear.Size = new System.Drawing.Size(120, 20);
             this.numYear.TabIndex = 6;
             // 
             // tbRegPlate
             // 
+            this.tbRegPlate.Culture = new System.Globalization.CultureInfo("en-GB");
             this.tbRegPlate.Location = new System.Drawing.Point(72, 248);
+            this.tbRegPlate.Mask = "AAAaaaaa";
             this.tbRegPlate.Name = "tbRegPlate";
             this.tbRegPlate.Size = new System.Drawing.Size(120, 20);
             this.tbRegPlate.TabIndex = 7;
@@ -169,9 +181,10 @@ namespace RentACar
             // picCar
             // 
             this.picCar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picCar.Location = new System.Drawing.Point(381, 57);
+            this.picCar.Location = new System.Drawing.Point(372, 38);
             this.picCar.Name = "picCar";
-            this.picCar.Size = new System.Drawing.Size(313, 280);
+            this.picCar.Size = new System.Drawing.Size(323, 280);
+            this.picCar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picCar.TabIndex = 13;
             this.picCar.TabStop = false;
             // 
@@ -183,6 +196,7 @@ namespace RentACar
             this.btnLoadPic.TabIndex = 14;
             this.btnLoadPic.Text = "+";
             this.btnLoadPic.UseVisualStyleBackColor = true;
+            this.btnLoadPic.Click += new System.EventHandler(this.btnLoadPic_Click);
             // 
             // btnDelPic
             // 
@@ -192,6 +206,7 @@ namespace RentACar
             this.btnDelPic.TabIndex = 15;
             this.btnDelPic.Text = "-";
             this.btnDelPic.UseVisualStyleBackColor = true;
+            this.btnDelPic.Click += new System.EventHandler(this.btnDelPic_Click);
             // 
             // FormAddCar
             // 

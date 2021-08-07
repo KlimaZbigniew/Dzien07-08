@@ -36,6 +36,7 @@ namespace RentACar
             cbBrands.ValueMember = "id";
 
             cbBrands.SelectedIndex = -1;
+            cbBrands.SelectedIndexChanged += CbBrands_SelectedIndexChanged;
 
 
             //models
@@ -52,6 +53,7 @@ namespace RentACar
             cbModels.ValueMember = "id";
 
             cbModels.SelectedIndex = -1;
+            cbModels.Enabled = false;
 
 
             //types
@@ -72,9 +74,41 @@ namespace RentACar
 
         }
 
+        private void CbBrands_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         if (cbBrands.SelectedIndex >- 1)
+            {
+                bsModels.Filter = $"brand_id = {cbBrands.SelectedValue}";
+                cbModels.DataSource = bsModels;
+                if (bsModels.Count > 0 )
+                {
+                    cbModels.Enabled = true;
+                    cbModels.SelectedIndex = -1;
+                }
+            }
+        }
+
         private void FormAddCar_Load(object sender, EventArgs e)
         {
             LoadDictionaries();
+        }
+
+        private void btnLoadPic_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                picCar.Image = new Bitmap(dialog.FileName);
+            }
+        }
+
+        private void btnDelPic_Click(object sender, EventArgs e)
+        {
+            if (picCar.Image != null)
+            {
+                picCar.Image.Dispose();
+                picCar.Image = null;
+            }
         }
     }
 }
