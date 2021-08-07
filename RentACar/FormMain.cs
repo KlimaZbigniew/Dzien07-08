@@ -16,5 +16,12 @@ namespace RentACar
         {
             InitializeComponent();
         }
+
+        private void mnuLogin_Click(object sender, EventArgs e)
+        {
+            FormLogin form = new FormLogin();
+
+            form.ShowDialog();
+        }
     }
 }

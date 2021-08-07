@@ -31,20 +31,22 @@ namespace RentACar
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.zakończToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCarRent = new System.Windows.Forms.ToolStripMenuItem();
-            this.listaSamochodówToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nmuCarList = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.plikToolStripMenuItem,
+            this.mnuFile,
             this.mnuCarRent});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -52,23 +54,15 @@ namespace RentACar
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // statusStrip1
+            // mnuFile
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // plikToolStripMenuItem
-            // 
-            this.plikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuLogin,
             this.toolStripMenuItem2,
             this.zakończToolStripMenuItem});
-            this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
-            this.plikToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.plikToolStripMenuItem.Text = "&Plik";
+            this.mnuFile.Name = "mnuFile";
+            this.mnuFile.Size = new System.Drawing.Size(38, 20);
+            this.mnuFile.Text = "&Plik";
             // 
             // mnuLogin
             // 
@@ -77,6 +71,7 @@ namespace RentACar
             this.mnuLogin.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
             this.mnuLogin.Size = new System.Drawing.Size(180, 22);
             this.mnuLogin.Text = "Login...";
+            this.mnuLogin.Click += new System.EventHandler(this.mnuLogin_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -92,17 +87,33 @@ namespace RentACar
             // mnuCarRent
             // 
             this.mnuCarRent.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listaSamochodówToolStripMenuItem});
+            this.nmuCarList});
             this.mnuCarRent.Enabled = false;
             this.mnuCarRent.Name = "mnuCarRent";
             this.mnuCarRent.Size = new System.Drawing.Size(97, 20);
             this.mnuCarRent.Text = "Wypożyczalnia";
             // 
-            // listaSamochodówToolStripMenuItem
+            // nmuCarList
             // 
-            this.listaSamochodówToolStripMenuItem.Name = "listaSamochodówToolStripMenuItem";
-            this.listaSamochodówToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.listaSamochodówToolStripMenuItem.Text = "Lista samochodów";
+            this.nmuCarList.Name = "nmuCarList";
+            this.nmuCarList.Size = new System.Drawing.Size(173, 22);
+            this.nmuCarList.Text = "Lista samochodów";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(105, 17);
+            this.toolStripStatusLabel1.Text = "XXXXXXXXXXXXXX";
             // 
             // FormMain
             // 
@@ -117,6 +128,8 @@ namespace RentACar
             this.Text = "Rent a car";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,13 +138,14 @@ namespace RentACar
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem plikToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem mnuLogin;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem zakończToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuCarRent;
-        private System.Windows.Forms.ToolStripMenuItem listaSamochodówToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nmuCarList;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 
