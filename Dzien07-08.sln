@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBindingExample", "DataBindingExample\DataBindingExample.csproj", "{C659CCAC-1E22-400F-8A6F-27A50631D57F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentACar", "RentACar\RentACar.csproj", "{2775E7A8-A8B4-4016-8A3F-74DC4E91A43B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C659CCAC-1E22-400F-8A6F-27A50631D57F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C659CCAC-1E22-400F-8A6F-27A50631D57F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C659CCAC-1E22-400F-8A6F-27A50631D57F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C659CCAC-1E22-400F-8A6F-27A50631D57F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2775E7A8-A8B4-4016-8A3F-74DC4E91A43B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2775E7A8-A8B4-4016-8A3F-74DC4E91A43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2775E7A8-A8B4-4016-8A3F-74DC4E91A43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2775E7A8-A8B4-4016-8A3F-74DC4E91A43B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {197D49CA-E71C-4232-976F-9EEE71BF1B40}
+	EndGlobalSection
+EndGlobal
