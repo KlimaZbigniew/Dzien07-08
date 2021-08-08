@@ -28,7 +28,7 @@ namespace RentACar
             if (OperBack)
             {
                 Text = $"Zdaj auto - {RegPlate}";
-                DataTable dt = GlobalData.ExecSQL($"SELECT * FROM cars");
+                DataTable dt = GlobalData.ExecSQL($"SELECT id FROM operations");
 
                 if (dt.Rows.Count >0)
                 {
@@ -52,12 +52,12 @@ namespace RentACar
                 sql = @"UPDATE operations SET
                             ts_in = @ts,
                             mileage_in = @mileage, 
-                            description = description + @desc
+                            description =  @desc
                         WHERE id = @id";
 
                 MySqlCommand cmd = new MySqlCommand(sql, GlobalData.connection);
 
-                cmd.Parameters.AddWithValue("@id", CarId);
+                cmd.Parameters.AddWithValue("@id", LastRekordId);
                 cmd.Parameters.AddWithValue("@ts", dtDate.Value);
                 cmd.Parameters.AddWithValue("@mileage", numMileade.Value);
                 cmd.Parameters.AddWithValue("@desc", tbDesc.Text);
