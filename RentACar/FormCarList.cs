@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using RentACar.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace RentACar
 {
@@ -48,8 +50,9 @@ namespace RentACar
 		private void RefreshData()
         {
 
-			//bSource.DataSource = dt;
-			//grid.DataSource = bSource;
+			DataTable dt = GetDataFromDB();
+			bSource.DataSource = dt;
+			grid.DataSource = bSource;
 
 		}
 
@@ -108,6 +111,84 @@ namespace RentACar
         {
 			FormAddCar form = new FormAddCar();
 			form.ShowDialog();
+			if (form.DialogResult == DialogResult.OK)
+				RefreshData();
+
+        }
+
+        private void mnuRefresh_Click(object sender, EventArgs e)
+        {
+			RefreshData();
+		}
+
+        private void mnuDelete_Click(object sender, EventArgs e)
+        {
+			DeletedRow();
+        }
+
+        private void DeletedRow()
+        {
+            if (grid.SelectedRows.Count != 1)            
+				return;
+			
+			if (MessageBox.Show("Czy usunąć rekord?", "Pytanie", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+				return;
+            try
+            {
+				string sql = "DELETE FROM cars WHERE id = @id";
+				MySqlCommand cmd = new MySqlCommand(sql, GlobalData.connection);
+
+
+				int selectedIndex = grid.SelectedRows[0].Index;
+				
+
+				//cmd.Parameters.Add("@id", MySqlDbType.Int32);
+				//cmd.Parameters["@id"].Value = Convert.ToInt32( grid["id", selectedIndex].Value);
+				cmd.Parameters.AddWithValue("@id", Convert.ToInt32(grid["id", selectedIndex].Value));
+
+				cmd.ExecuteNonQuery();
+
+				//Usuniecie wiersza z grida
+				//RefreshData();
+				grid.Rows.RemoveAt(selectedIndex);
+					
+            }
+            catch (Exception ex)
+            {
+				DialogHelper.E(ex.Message);
+                
+            }
+        }
+
+        private void edytujToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			if (grid.SelectedRows.Count != 1)
+				return;
+
+			int selectedIndex = grid.SelectedRows[0].Index;
+			FormAddCar form = new FormAddCar();
+			form.RowId = Convert.ToInt32(grid["id", selectedIndex].Value);
+			if (form.ShowDialog() == DialogResult.OK)
+				RefreshData();
+		}
+
+        private void grid_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+			
+
+		}
+
+        private void grid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+			edytujToolStripMenuItem_Click(sender, null);
+		}
+
+        private void tbFind_KeyPress(object sender, KeyPressEventArgs e)
+        {
+			if (e.KeyChar == (char)13)
+            {
+				bSource.Filter = $" brand LIKE '%{tbFind.Text.Trim()}%' ";
+            }
         }
     }
 }

@@ -15,6 +15,8 @@ namespace RentACar
 {
     public partial class FormAddCar : Form
     {
+        public int RowId { get; set; } //Id wiersza do edycji
+
         public FormAddCar()
         {
             InitializeComponent();
@@ -95,6 +97,51 @@ namespace RentACar
             LoadDictionaries();
             numYear.Value = DateTime.Now.Year;
             numYear.Maximum = DateTime.Now.Year;
+
+            //JEśli rowId to jesteśmy w edycji rlordu
+            if (RowId > 0)
+            {                
+                MySqlDataReader data = GetRekord(RowId);
+                
+                if (data!=null &&  data.HasRows)
+                {
+                    data.Read();  //inicjalne pobranie rekordu z danymi 
+                    numEngine.Value = Convert.ToInt32(data["engine"]);
+                    numYear.Value = Convert.ToInt32(data["manufacturer_year"]);
+                    tbRegPlate.Text = data["registration_plate"].ToString();
+
+                    cbBrands.SelectedValue = data["brand_id"];
+                    cbModels.SelectedValue = data["model_id"];
+                    cbTypes.SelectedValue = data["type_id"];
+
+                    cbFuel.SelectedIndex = cbFuel.Items.IndexOf(data["fuel"]);
+
+                    if (!(data["image"] is DBNull))
+                    {
+                        byte[] b = (byte[])data["image"];
+                        using (MemoryStream ms = new MemoryStream(b))
+                        {
+                            picCar.Image = Image.FromStream(ms);
+                        }
+                        
+                    }
+
+                    data.Close();
+                }
+            }
+        }
+
+        private MySqlDataReader GetRekord(int rowId)
+        {
+            string sql = @"SELECT model_id, type_id, registration_plate, `ENGINE`, manufacturer_year, image,fuel, TM.brand_id
+                            FROM cars TC 
+	                            INNER JOIN car_models TM ON TM.id = TC.model_id
+                            WHERE TC.id = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, GlobalData.connection);
+            cmd.Parameters.AddWithValue("@id", rowId);
+
+            MySqlDataReader result = cmd.ExecuteReader();
+            return result;
         }
 
         private string pictureFileName = null;
@@ -114,7 +161,7 @@ namespace RentACar
             {
                 picCar.Image.Dispose();
                 picCar.Image = null;
-                pictureFileName = null;
+                pictureFileName = "";
             }
         }
 
@@ -142,8 +189,24 @@ namespace RentACar
 
         private void SaveData()
         {
-            string sql = @"INSERT INTO cars (model_id, type_id, registration_plate, `ENGINE`, manufacturer_year, image,fuel)
+
+            string sql = null;
+            string cPic = RowId>0 && pictureFileName == null? "": " image = @image, ";
+
+            if (RowId == 0)
+                sql = @"INSERT INTO cars (model_id, type_id, registration_plate, `ENGINE`, manufacturer_year, image,fuel)
                            VALUES (@model_id, @type_id, @reg_plate, @engine, @year, @image, @fuel)";
+            else
+                sql = $@"UPDATE cars SET
+                            model_id = @model_id, 
+                            type_id = @type_id, 
+                            registration_plate = @reg_plate,
+                            `engine` = @engine,
+                            manufacturer_year = @year, 
+                            {cPic}                             
+                           fuel = @fuel
+                        WHERE
+                            id = @id";
 
             //Deklaracja parametyrów do zapytania
             MySqlCommand cmd = new MySqlCommand(sql, GlobalData.connection);
@@ -163,10 +226,13 @@ namespace RentACar
             cmd.Parameters["@engine"].Value = numEngine.Value;
             cmd.Parameters["@year"].Value = numYear.Value;
             cmd.Parameters["@fuel"].Value = cbFuel.SelectedItem;
-            if (pictureFileName != null)
+            if (!string.IsNullOrEmpty(pictureFileName))
                 cmd.Parameters["@image"].Value = File.ReadAllBytes(pictureFileName);
             else
                 cmd.Parameters["@image"].Value = null;
+            
+            if (RowId > 0)
+                cmd.Parameters.AddWithValue("@id", RowId);
 
             cmd.ExecuteNonQuery();
             DialogResult = DialogResult.OK;

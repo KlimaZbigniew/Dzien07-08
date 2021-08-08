@@ -105,7 +105,7 @@ namespace RentACar
             this.cbTypes.Location = new System.Drawing.Point(72, 135);
             this.cbTypes.Name = "cbTypes";
             this.cbTypes.Size = new System.Drawing.Size(121, 21);
-            this.cbTypes.TabIndex = 4;
+            this.cbTypes.TabIndex = 2;
             // 
             // numYear
             // 
@@ -127,7 +127,7 @@ namespace RentACar
             0});
             this.numYear.Name = "numYear";
             this.numYear.Size = new System.Drawing.Size(120, 20);
-            this.numYear.TabIndex = 6;
+            this.numYear.TabIndex = 3;
             this.numYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numYear.Value = new decimal(new int[] {
             2021,
@@ -142,7 +142,7 @@ namespace RentACar
             this.tbRegPlate.Mask = "AAAaaaaa";
             this.tbRegPlate.Name = "tbRegPlate";
             this.tbRegPlate.Size = new System.Drawing.Size(120, 20);
-            this.tbRegPlate.TabIndex = 7;
+            this.tbRegPlate.TabIndex = 5;
             // 
             // label4
             // 
@@ -164,7 +164,7 @@ namespace RentACar
             this.cbFuel.Location = new System.Drawing.Point(72, 317);
             this.cbFuel.Name = "cbFuel";
             this.cbFuel.Size = new System.Drawing.Size(121, 21);
-            this.cbFuel.TabIndex = 9;
+            this.cbFuel.TabIndex = 6;
             // 
             // label5
             // 
@@ -180,17 +180,18 @@ namespace RentACar
             this.btnOK.Location = new System.Drawing.Point(94, 368);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(151, 55);
-            this.btnOK.TabIndex = 11;
+            this.btnOK.TabIndex = 9;
             this.btnOK.Text = "Zapisz";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(514, 374);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(181, 49);
-            this.btnCancel.TabIndex = 12;
+            this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Anuluj";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -209,7 +210,7 @@ namespace RentACar
             this.btnLoadPic.Location = new System.Drawing.Point(711, 89);
             this.btnLoadPic.Name = "btnLoadPic";
             this.btnLoadPic.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadPic.TabIndex = 14;
+            this.btnLoadPic.TabIndex = 7;
             this.btnLoadPic.Text = "+";
             this.btnLoadPic.UseVisualStyleBackColor = true;
             this.btnLoadPic.Click += new System.EventHandler(this.btnLoadPic_Click);
@@ -219,7 +220,7 @@ namespace RentACar
             this.btnDelPic.Location = new System.Drawing.Point(711, 143);
             this.btnDelPic.Name = "btnDelPic";
             this.btnDelPic.Size = new System.Drawing.Size(75, 23);
-            this.btnDelPic.TabIndex = 15;
+            this.btnDelPic.TabIndex = 8;
             this.btnDelPic.Text = "-";
             this.btnDelPic.UseVisualStyleBackColor = true;
             this.btnDelPic.Click += new System.EventHandler(this.btnDelPic_Click);
@@ -262,7 +263,7 @@ namespace RentACar
             0});
             this.numEngine.Name = "numEngine";
             this.numEngine.Size = new System.Drawing.Size(120, 20);
-            this.numEngine.TabIndex = 18;
+            this.numEngine.TabIndex = 4;
             this.numEngine.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.numEngine.Value = new decimal(new int[] {
             1598,
@@ -274,6 +275,7 @@ namespace RentACar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.numEngine);
             this.Controls.Add(this.label7);
