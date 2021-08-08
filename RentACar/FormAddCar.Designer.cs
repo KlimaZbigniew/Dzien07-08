@@ -45,8 +45,12 @@ namespace RentACar
             this.picCar = new System.Windows.Forms.PictureBox();
             this.btnLoadPic = new System.Windows.Forms.Button();
             this.btnDelPic = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numEngine = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numYear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEngine)).BeginInit();
             this.SuspendLayout();
             // 
             // cbBrands
@@ -110,15 +114,26 @@ namespace RentACar
             0,
             0,
             0});
-            this.numYear.Location = new System.Drawing.Point(72, 204);
+            this.numYear.Location = new System.Drawing.Point(73, 186);
             this.numYear.Maximum = new decimal(new int[] {
-            2000,
+            2021,
+            0,
+            0,
+            0});
+            this.numYear.Minimum = new decimal(new int[] {
+            1950,
             0,
             0,
             0});
             this.numYear.Name = "numYear";
             this.numYear.Size = new System.Drawing.Size(120, 20);
             this.numYear.TabIndex = 6;
+            this.numYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numYear.Value = new decimal(new int[] {
+            2021,
+            0,
+            0,
+            0});
             // 
             // tbRegPlate
             // 
@@ -166,8 +181,9 @@ namespace RentACar
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(151, 55);
             this.btnOK.TabIndex = 11;
-            this.btnOK.Text = "button1";
+            this.btnOK.Text = "Zapisz";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -175,13 +191,13 @@ namespace RentACar
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(181, 49);
             this.btnCancel.TabIndex = 12;
-            this.btnCancel.Text = "button2";
+            this.btnCancel.Text = "Anuluj";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // picCar
             // 
             this.picCar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picCar.Location = new System.Drawing.Point(372, 38);
+            this.picCar.Location = new System.Drawing.Point(312, 54);
             this.picCar.Name = "picCar";
             this.picCar.Size = new System.Drawing.Size(323, 280);
             this.picCar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -208,11 +224,60 @@ namespace RentACar
             this.btnDelPic.UseVisualStyleBackColor = true;
             this.btnDelPic.Click += new System.EventHandler(this.btnDelPic_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(-5, 188);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Rok produkcji:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 218);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Pojemność";
+            // 
+            // numEngine
+            // 
+            this.numEngine.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numEngine.Location = new System.Drawing.Point(71, 216);
+            this.numEngine.Maximum = new decimal(new int[] {
+            6500,
+            0,
+            0,
+            0});
+            this.numEngine.Minimum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.numEngine.Name = "numEngine";
+            this.numEngine.Size = new System.Drawing.Size(120, 20);
+            this.numEngine.TabIndex = 18;
+            this.numEngine.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.numEngine.Value = new decimal(new int[] {
+            1598,
+            0,
+            0,
+            0});
+            // 
             // FormAddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.numEngine);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDelPic);
             this.Controls.Add(this.btnLoadPic);
             this.Controls.Add(this.picCar);
@@ -233,10 +298,11 @@ namespace RentACar
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAddCar";
-            this.Text = "FormAddCar";
+            this.Text = "Nowy samochód";
             this.Load += new System.EventHandler(this.FormAddCar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numYear)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numEngine)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -260,5 +326,8 @@ namespace RentACar
         private System.Windows.Forms.PictureBox picCar;
         private System.Windows.Forms.Button btnLoadPic;
         private System.Windows.Forms.Button btnDelPic;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown numEngine;
     }
 }
